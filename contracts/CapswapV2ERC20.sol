@@ -6,8 +6,8 @@ import './libraries/SafeMath.sol';
 contract CapswapV2ERC20 is ICapswapV2ERC20 {
     using SafeMath for uint;
 
-    string public constant name = 'Capswap V2';
-    string public constant symbol = 'CAP-V2';
+    string public name = 'Capricornswap V2';
+    string public symbol = 'CPC-V2';
     uint8 public constant decimals = 18;
     uint  public totalSupply;
     mapping(address => uint) public balanceOf;

@@ -67,6 +67,20 @@ contract CapswapV2Pair is ICapswapV2Pair, CapswapV2ERC20 {
         require(msg.sender == factory, 'CapswapV2: FORBIDDEN'); // sufficient check
         token0 = _token0;
         token1 = _token1;
+        name = string(abi.encodePacked('Capricorn Pair ',getTokenName(token0),' - ',getTokenName(token1)));
+        symbol= string(abi.encodePacked(getTokenSymbol(token0),'-',getTokenSymbol(token1)));
+    }
+
+    function getTokenSymbol(address token) private view returns(string memory _symbol){
+        bytes4 SELECTOR_SYMBOL = bytes4(keccak256(bytes('symbol()')));
+        (bool success, bytes memory data) = token.staticcall(abi.encodeWithSelector(SELECTOR_SYMBOL));
+        _symbol = success?abi.decode(data, (string)):'';
+    }
+
+    function getTokenName(address token) private view returns(string memory _name){
+        bytes4 SELECTOR_NAME = bytes4(keccak256(bytes('name()')));
+        (bool success, bytes memory data) = token.staticcall(abi.encodeWithSelector(SELECTOR_NAME));
+        _name= success?abi.decode(data, (string)):'';
     }
 
     // update reserves and, on the first call per block, price accumulators
