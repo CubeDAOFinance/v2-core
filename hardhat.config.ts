@@ -40,11 +40,14 @@ const config: HardhatUserConfig = {
     },
     "heco-testnet": {
       url: "https://http-testnet.hecochain.com",
-      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
     },
     "cube-testnet": {
-      url: "https://http-testnet.cube.network",
-      accounts: process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      url: "https://http-testnet-jp.cube.network",
+      accounts:
+        process.env.PRIVATE_KEY !== undefined ? [process.env.PRIVATE_KEY] : [],
+      gasPrice: 5000000000,
     },
   },
   gasReporter: {

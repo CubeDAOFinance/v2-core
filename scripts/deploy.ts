@@ -18,13 +18,13 @@ async function main() {
   console.log("Deploying contracts with the account:", deployer.address);
   console.log("Account balance:", (await deployer.getBalance()).toString());
 
-    const Factory= await ethers.getContractFactory("CapswapV2Factory");
-    const factory= await Factory.deploy(deployer.address);
-    await factory.deployed();
+  const Factory = await ethers.getContractFactory("CapswapV2Factory");
+  const factory = await Factory.deploy(deployer.address);
+  await factory.deployed();
 
   console.log("Factory deployed to:", factory.address);
-  console.log("initCodeHash",await factory.initCodeHash());
-  console.log("feeToSetter",await factory.feeToSetter());
+  console.log("initCodeHash", await factory.initCodeHash());
+  console.log("feeToSetter", await factory.feeToSetter());
 }
 
 // We recommend this pattern to be able to use async/await everywhere
