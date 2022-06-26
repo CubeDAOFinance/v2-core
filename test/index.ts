@@ -5,7 +5,7 @@ describe("Deploy factory", function () {
   it("deploy factory", async function () {
     const addrs = await ethers.getSigners();
     const owner = addrs[0].address;
-    const Factory= await ethers.getContractFactory("CapswapV2Factory");
+    const Factory= await ethers.getContractFactory("CubeswapV2Factory");
     const factory= await Factory.deploy(owner);
     await factory.deployed();
 
