@@ -1,13 +1,13 @@
 pragma solidity =0.5.16;
 
-import './interfaces/ICapswapV2ERC20.sol';
+import './interfaces/ICubeswapV2ERC20.sol';
 import './libraries/SafeMath.sol';
 
-contract CapswapV2ERC20 is ICapswapV2ERC20 {
+contract CubeswapV2ERC20 is ICubeswapV2ERC20 {
     using SafeMath for uint;
 
-    string public name = 'Capricornswap V2';
-    string public symbol = 'CPC-V2';
+    string public name = 'Cubedaoswap V2';
+    string public symbol = 'CBD-V2';
     uint8 public constant decimals = 18;
     uint  public totalSupply;
     mapping(address => uint) public balanceOf;
@@ -79,7 +79,7 @@ contract CapswapV2ERC20 is ICapswapV2ERC20 {
     }
 
     function permit(address owner, address spender, uint value, uint deadline, uint8 v, bytes32 r, bytes32 s) external {
-        require(deadline >= block.timestamp, 'CapswapV2: EXPIRED');
+        require(deadline >= block.timestamp, 'CubeswapV2: EXPIRED');
         bytes32 digest = keccak256(
             abi.encodePacked(
                 '\x19\x01',
@@ -88,7 +88,7 @@ contract CapswapV2ERC20 is ICapswapV2ERC20 {
             )
         );
         address recoveredAddress = ecrecover(digest, v, r, s);
-        require(recoveredAddress != address(0) && recoveredAddress == owner, 'CapswapV2: INVALID_SIGNATURE');
+        require(recoveredAddress != address(0) && recoveredAddress == owner, 'CubeswapV2: INVALID_SIGNATURE');
         _approve(owner, spender, value);
     }
 }
